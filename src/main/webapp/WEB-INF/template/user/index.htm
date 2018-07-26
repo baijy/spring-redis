@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>包子</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description"
+	content="包子" />
+<meta name="keywords"
+	content="包子" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<script src="/js/jquery.1.10.2.min.js"></script>
+</head>
+<body class="container">
+	<div class="row">
+		<a href="/user/create.htm">增加用户</a>
+		<div class="col-xs-12">
+			<table class="table">
+				<tr>
+					<th>id</th>
+					<th>注册时间</th>
+					<th>用户名</th>
+					<th>操作</th>
+				</tr>
+				<#list users as user>
+				<tr>
+					<td>${user.id}</td>
+					<td>${user.createTime}</td>
+					<td>${user.name}</td>
+					<td><a
+						class="alert alert-error" href="/user/delete.htm?id=${user.id}">删除</a></td>
+				</tr>
+				</#list>
+			</table>
+			<center class="pagination">
+					<#if (p>1)><a href="/user.htm?p=${p-1}">上一页</a></#if> 
+					<#if (p<page_total)><a href="/user.htm?p=${p+1}">下一页</a></#if>
+					共${page_total}页,第${p}页
+			</center>
+		</div>
+	</div>
+</body>
+</html>
